@@ -9,6 +9,22 @@ $birthdays = [
     '2024-12-25' => 'Frank'
 ];
 
+// Array of Bulgarian month names
+$bulgarianMonths = [
+    '01' => 'Януари',
+    '02' => 'Февруари',
+    '03' => 'Март',
+    '04' => 'Април',
+    '05' => 'Май',
+    '06' => 'Юни',
+    '07' => 'Юли',
+    '08' => 'Август',
+    '09' => 'Септември',
+    '10' => 'Октомври',
+    '11' => 'Ноември',
+    '12' => 'Декември'
+];
+
 // Get the current month and year
 $currentMonth = date('m');
 $currentYear = date('Y');
@@ -19,24 +35,26 @@ $firstDayOfMonth = strtotime("{$currentYear}-{$currentMonth}-01");
 // Determine how many days are in the month
 $daysInMonth = date('t', $firstDayOfMonth);
 
-// Get the name of the current month
-$monthName = date('F', $firstDayOfMonth);
+// Get the Bulgarian name of the current month
+$monthName = $bulgarianMonths[$currentMonth];
 
 // Get the weekday of the first day of the month
 $firstDayWeekday = date('w', $firstDayOfMonth);
 
 // Function to display the calendar
 function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekday, $daysInMonth) {
+    global $bulgarianMonths;
+    
     echo "<h2>{$currentYear} - {$currentMonth}</h2>";
     echo "<table border='1' style='border-collapse: collapse; width: 100%;'>";
     echo "<tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
+            <th>Нд</th>
+            <th>Пн</th>
+            <th>Вт</th>
+            <th>Ср</th>
+            <th>Чт</th>
+            <th>Пт</th>
+            <th>Сб</th>
           </tr>";
     
     $day = 1;
@@ -58,7 +76,7 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
             
             // Check if there's a birthday on this day
             if (isset($birthdays[$date])) {
-                echo "<br><span style='color: red;'>Birthday: {$birthdays[$date]}</span>";
+                echo "<br><span style='color: red;'>Рожден ден: {$birthdays[$date]}</span>";
             }
             
             echo "</td>";
@@ -79,7 +97,7 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
                 
                 // Check if there's a birthday on this day
                 if (isset($birthdays[$date])) {
-                    echo "<br><span style='color: red;'>Birthday: {$birthdays[$date]}</span>";
+                    echo "<br><span style='color: red;'>Рожден ден: {$birthdays[$date]}</span>";
                 }
                 
                 echo "</td>";
