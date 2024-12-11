@@ -41,25 +41,30 @@ $monthName = $bulgarianMonths[$currentMonth];
 // Get the weekday of the first day of the month
 $firstDayWeekday = date('w', $firstDayOfMonth);
 
+// Adjust so the week starts on Monday (0 = Monday, 6 = Sunday)
+$firstDayWeekday = ($firstDayWeekday == 0) ? 6 : $firstDayWeekday - 1;
+
 // Function to display the calendar
 function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekday, $daysInMonth) {
     global $bulgarianMonths;
     
     echo "<h2>{$currentYear} - {$currentMonth}</h2>";
     echo "<table border='1' style='border-collapse: collapse; width: 100%;'>";
+    
+    // Header with the days of the week (in Bulgarian)
     echo "<tr>
-            <th>Нд</th>
             <th>Пн</th>
             <th>Вт</th>
             <th>Ср</th>
             <th>Чт</th>
             <th>Пт</th>
             <th>Сб</th>
+            <th>Нд</th>
           </tr>";
     
     $day = 1;
     
-    // Start the first row from the correct weekday
+    // Start the first row from the correct weekday (Monday)
     echo "<tr>";
     
     // Print empty cells until the first day of the month
