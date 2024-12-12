@@ -76,7 +76,14 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
     for ($i = $firstDayWeekday; $i < 7; $i++) {
         if ($day <= $daysInMonth) {
             $date = "{$currentYear}-{$currentMonth}-" . str_pad($day, 2, "0", STR_PAD_LEFT);
-            echo "<td style='padding: 10px;'>";
+            
+            // Check if the day is a weekend (Saturday or Sunday)
+            $isWeekend = ($i == 5 || $i == 6); // Saturday = 5, Sunday = 6
+            
+            // Apply weekend background color if it's Saturday or Sunday
+            $backgroundColor = $isWeekend ? '#f0f0f0' : ''; // Light gray background for weekends
+            
+            echo "<td style='padding: 10px; background-color: {$backgroundColor};'>";
             echo $day;
             
             // Check if there's a birthday on this day
@@ -97,7 +104,14 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
         for ($i = 0; $i < 7; $i++) {
             if ($day <= $daysInMonth) {
                 $date = "{$currentYear}-{$currentMonth}-" . str_pad($day, 2, "0", STR_PAD_LEFT);
-                echo "<td style='padding: 10px;'>";
+                
+                // Check if the day is a weekend (Saturday or Sunday)
+                $isWeekend = ($i == 5 || $i == 6); // Saturday = 5, Sunday = 6
+                
+                // Apply weekend background color if it's Saturday or Sunday
+                $backgroundColor = $isWeekend ? '#f0f0f0' : ''; // Light gray background for weekends
+                
+                echo "<td style='padding: 10px; background-color: {$backgroundColor};'>";
                 echo $day;
                 
                 // Check if there's a birthday on this day
