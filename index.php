@@ -1,12 +1,12 @@
 <?php
 // Array of birthdays (you can replace this with a database)
 $birthdays = [
-    '2024-12-01' => 'Alice',
-    '2024-12-05' => 'Bob',
-    '2024-12-10' => 'Charlie',
-    '2024-12-15' => 'David',
-    '2024-12-20' => 'Eva',
-    '2024-12-25' => 'Frank'
+    '2024-12-01' => 'Анна',
+    '2024-12-05' => 'Бранимир',
+    '2024-12-10' => 'Владимир',
+    '2024-12-15' => 'Диана',
+    '2024-12-20' => 'Ева',
+    '2024-12-25' => 'Франк'
 ];
 
 // Array of Bulgarian month names
@@ -104,7 +104,7 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
         for ($i = 0; $i < 7; $i++) {
             if ($day <= $daysInMonth) {
                 $date = "{$currentYear}-{$currentMonth}-" . str_pad($day, 2, "0", STR_PAD_LEFT);
-                
+               
                 // Check if the day is a weekend (Saturday or Sunday)
                 $isWeekend = ($i == 5 || $i == 6); // Saturday = 5, Sunday = 6
                 
@@ -117,8 +117,7 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
                 // Check if there's a birthday on this day
                 if (isset($birthdays[$date])) {
                     echo "<br><span style='color: red;'>Рожден ден: {$birthdays[$date]}</span>";
-                }
-                
+                }               
                 echo "</td>";
                 $day++;
             } else {
@@ -132,5 +131,5 @@ function displayCalendar($currentMonth, $currentYear, $birthdays, $firstDayWeekd
 }
 
 // Display the calendar for the current month
-displayCalendar($monthName, $currentYear, $birthdays, $firstDayWeekday, $daysInMonth);
+displayCalendar(12, $currentYear, $birthdays, $firstDayWeekday, $daysInMonth);
 ?>
